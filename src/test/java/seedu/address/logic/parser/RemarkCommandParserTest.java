@@ -9,6 +9,7 @@ import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.commands.RemarkCommand;
+import seedu.address.model.person.Remark;
 
 public class RemarkCommandParserTest {
 
@@ -19,11 +20,11 @@ public class RemarkCommandParserTest {
     public void parse_indexSpecified_success() {
         // have remark
         String userInput = INDEX_FIRST_PERSON.getOneBased() + " " + PREFIX_REMARK + nonEmptyRemark;
-        assertParseSuccess(parser, userInput, new RemarkCommand(INDEX_FIRST_PERSON, nonEmptyRemark));
+        assertParseSuccess(parser, userInput, new RemarkCommand(INDEX_FIRST_PERSON, new Remark(nonEmptyRemark)));
 
         // no remark
         userInput = INDEX_FIRST_PERSON.getOneBased() + " " + PREFIX_REMARK;
-        assertParseSuccess(parser, userInput, new RemarkCommand(INDEX_FIRST_PERSON, ""));
+        assertParseSuccess(parser, userInput, new RemarkCommand(INDEX_FIRST_PERSON, new Remark("")));
     }
 
     @Test
